@@ -1,0 +1,41 @@
+<% include partials/header-admin.ejs %>
+    <div class="table-wrapper">
+        <% if (admin.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">AdminID</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Jabatan</th>
+                        <th scope="col">Asal</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% admin.forEach((admin, index) => { %>
+                        <tr>
+                            <td><img src="public/assets/img/<%= admin.image %>" class="rounded-circle admin-img" alt=""></td>
+                            <th scope="row"><%= admin.AdminID %></th>
+                            <td><%= admin.nama %></td>
+                            <td><%= admin.jabatan %></td>
+                            <td><%= admin.asal %></td>
+                            <td>@<%= admin.username %></td>
+                            <td>@<%= admin.password %></td>
+                            <td>
+                                <a href="/edit/<%= admin.adminID %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/delete/<%=admin.adminID %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } 
+        else { %>
+            <p class="text-center">No admin found. Go <a href="/add" >here</a> to add admin.</p>
+        <% } %>
+    </div>
+
+<% include partials/footer.ejs %>

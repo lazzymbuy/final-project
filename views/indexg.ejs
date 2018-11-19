@@ -1,0 +1,43 @@
+<% include partials/header-guru.ejs %>
+    <div class="table-wrapper">
+        <% if (guru.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">GuruID</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Jabatan</th>
+                        <th scope="col">Tahun Masuk</th>
+                        <th scope="col">Mata Pelajaran</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% guru.forEach((guru, index) => { %>
+                        <tr>
+                            <td><img src="public/assets/img/<%= guru.image %>" class="rounded-circle guru-img" alt=""></td>
+                            <th scope="row"><%= guru.guruID %></th>
+                            <td><%= guru.nama %></td>
+                            <td><%= guru.jabatan %></td>
+                            <td><%= guru.tahunMasuk %></td>
+                            <td><%= guru.mataPelajaran %></td>
+                            <td>@<%= guru.username %></td>
+                            <td>@<%= guru.password %></td>
+                            <td>
+                                <a href="/edit/<%= guru.guruID %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/delete/<%=guru.guruID %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } 
+        else { %>
+            <p class="text-center">No guru found. Go <a href="/add" >here</a> to add guru.</p>
+        <% } %>
+    </div>
+
+<% include partials/footer.ejs %>
