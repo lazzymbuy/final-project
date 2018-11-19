@@ -46,8 +46,7 @@ module.exports = {
                             return res.status(500).send(err);
                         }
                         // send the murid's details to the database
-                        let query = "INSERT INTO `murid` (muridID, nama, kelas, jurusan, alamat, username, password, image) VALUES ( '" +
-                         muridID + "','" + nama + "', '" + kelas + "', '" + jurusan + "', '" + alamat + "', '" + username + "', '" + username + "', '" + password + "', '" + image_name + "')";
+                        let query = "INSERT INTO `murid` (muridID, nama, kelas, jurusan, alamat, username, password, image) VALUES ( '" + parseInt(muridID) + "','" + nama + "', '" + kelas + "', '" + jurusan + "', '" + alamat + "', '"+ username + "', '" + password + "', '" + image_name + "')";
                         db.query(query, (err, result) => {
                             if (err) {
                                 return res.status(500).send(err);
